@@ -1,0 +1,58 @@
+import java.util.*;
+
+abstract class Dessert {
+    private String food;
+    public Dessert(String food) {
+        this.food = food;
+    }
+    public String get() { return food; }
+    public abstract int bill(int n);  
+}
+
+class Chocolate extends Dessert {
+    public Chocolate(String food) {
+        super(food);
+    }
+    @Override
+    public int bill(int n) {
+        return n * 20;
+    }
+}
+
+class Vanilla extends Dessert {
+    public Vanilla(String food) {
+        super(food);
+    }
+    @Override
+    public int bill(int n) {
+        return n * 10;
+    }
+}
+
+class Main {
+    public static void main(String args[]) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Dessert Menu: \n1. Chocolate\n2. Vanilla");
+        int choice = sc.nextInt();
+        sc.nextLine(); 
+
+        System.out.print("Enter Dessert Name: ");
+        String name = sc.nextLine();
+
+        System.out.print("Quantity: ");
+        int qty = sc.nextInt();
+
+        if (choice == 1) {
+            Chocolate c = new Chocolate(name);
+            System.out.println("You ordered: " + c.get());
+            System.out.println("Bill: " + c.bill(qty));
+        } else if (choice == 2) {
+            Vanilla v = new Vanilla(name);
+            System.out.println("You ordered: " + v.get());
+            System.out.println("Bill: " + v.bill(qty));
+        } else {
+            System.out.println("Invalid choice!");
+        }
+    }
+}
+
