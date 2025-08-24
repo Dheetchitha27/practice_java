@@ -1,0 +1,62 @@
+import java.util.*;
+class Main{
+class Node{
+    String a,b,c;
+    Node next;
+    public Node(String a,String b, String c) {
+        this.a = a;
+        this.b = b;
+        this.c = c;
+        this.next = null;
+    }
+    }
+    
+    Node head = null , tail = null;
+    
+    public void insert(String a,String b, String c)   
+    {
+        
+        Node newnode = new Node(a,b,c);
+        if(head == null)
+        {
+            head = newnode;
+            tail = newnode;
+        }
+        
+        else{
+            tail.next = newnode;
+            tail = newnode;
+        }
+    }
+     void display()
+    {
+        Node i;
+        if(head==null)
+        {
+            System.out.println("emty list");
+            return ;
+        }
+        for(i=head ; i!=null ; i = i.next )
+        {
+            System.out.print(i.a +", "+i.b+", "+i.c+" ->");
+           
+        }
+        
+        System.out.println("\n-------------------------------\n");
+    }
+	public static void main(String [] args){
+			   
+	 Main m = new Main();
+	     Scanner sc = new Scanner(System.in);
+	     System.out.print("Enter no of students:");
+	     int n = sc.nextInt();
+	     for(int i=0;i<n;i++){
+	            String name=sc.next();
+	            String dept=sc.next();
+	            String phone=sc.next();
+	            m.insert(name,dept,phone);
+	            
+	     }
+	    m.display();
+	}
+}
